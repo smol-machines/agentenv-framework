@@ -1,0 +1,13 @@
+name: probe
+on: { push: { branches: [probe] } }
+jobs:
+  probe:
+    runs-on: smol
+    steps:
+      - run: |
+          set -x
+          which -a bash; bash -c 'echo $0'; /usr/bin/bash -c 'echo $0'
+          cat /etc/os-release | head -2; uname -r; nproc; free -g | head -2
+          docker version --format '{{.Server.Version}}'; docker info --format '{{json .DriverStatus}}'; docker info --format '{{.Driver}}'
+          ls -la /run/containerd /var/run/docker/containerd 2>&1; which ctr nerdctl; systemctl list-units --type=service --no-pager | grep -iE 'docker|containerd'
+          cat /etc/docker/daemon.json 2>&1; sudo -n true && echo sudo-ok; dpkg -l | grep -E 'docker|containerd' | awk '{print $2, $3}'
