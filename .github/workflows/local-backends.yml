@@ -34,7 +34,7 @@ jobs:
       # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
       - name: smol runner fixes (temporary)
         run: |
-          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "${0##*/}" "$REAL" "$@"|' /usr/local/bin/bash
           sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
@@ -71,7 +71,7 @@ jobs:
       # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
       - name: smol runner fixes (temporary)
         run: |
-          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "${0##*/}" "$REAL" "$@"|' /usr/local/bin/bash
           sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
@@ -102,7 +102,7 @@ jobs:
       # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
       - name: smol runner fixes (temporary)
         run: |
-          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "${0##*/}" "$REAL" "$@"|' /usr/local/bin/bash
           sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
@@ -144,7 +144,7 @@ jobs:
       # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
       - name: smol runner fixes (temporary)
         run: |
-          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "${0##*/}" "$REAL" "$@"|' /usr/local/bin/bash
           sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
@@ -195,7 +195,7 @@ jobs:
       # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
       - name: smol runner fixes (temporary)
         run: |
-          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "${0##*/}" "$REAL" "$@"|' /usr/local/bin/bash
           sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
@@ -288,7 +288,7 @@ jobs:
       # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
       - name: smol runner fixes (temporary)
         run: |
-          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "${0##*/}" "$REAL" "$@"|' /usr/local/bin/bash
           sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
