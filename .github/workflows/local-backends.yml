@@ -30,6 +30,12 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      # until smol ci ships these two fixes: its bash shim must keep argv[0] (`bash -c 'echo $0'` must print `bash`), and the
+      # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
+      - name: smol runner fixes (temporary)
+        run: |
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
@@ -61,6 +67,12 @@ jobs:
         working-directory: src/agent_env/explorer/ui
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      # until smol ci ships these two fixes: its bash shim must keep argv[0] (`bash -c 'echo $0'` must print `bash`), and the
+      # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
+      - name: smol runner fixes (temporary)
+        run: |
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "22"
@@ -86,6 +98,12 @@ jobs:
           - 5000:5000
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      # until smol ci ships these two fixes: its bash shim must keep argv[0] (`bash -c 'echo $0'` must print `bash`), and the
+      # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
+      - name: smol runner fixes (temporary)
+        run: |
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
@@ -122,6 +140,12 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      # until smol ci ships these two fixes: its bash shim must keep argv[0] (`bash -c 'echo $0'` must print `bash`), and the
+      # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
+      - name: smol runner fixes (temporary)
+        run: |
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
@@ -167,6 +191,12 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      # until smol ci ships these two fixes: its bash shim must keep argv[0] (`bash -c 'echo $0'` must print `bash`), and the
+      # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
+      - name: smol runner fixes (temporary)
+        run: |
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
@@ -254,6 +284,12 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      # until smol ci ships these two fixes: its bash shim must keep argv[0] (`bash -c 'echo $0'` must print `bash`), and the
+      # containerd socket must be where ubuntu-latest has it, for `sudo ctr`
+      - name: smol runner fixes (temporary)
+        run: |
+          sudo sed -i 's|^exec "$REAL" "$@"$|exec -a "$0" "$REAL" "$@"|' /usr/local/bin/bash
+          sudo mkdir -p /run/containerd && sudo ln -sfn /var/run/docker/containerd/containerd.sock /run/containerd/containerd.sock
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
