@@ -26,7 +26,7 @@ env:
 
 jobs:
   unit:
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -54,7 +54,7 @@ jobs:
         run: .venv/bin/python -m pytest tst/unit packages/agentenv-protocol/tests -n auto -q --timeout=300 --junitxml=junit-unit.xml
 
   ui:
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 15
     defaults:
       run:
@@ -77,7 +77,7 @@ jobs:
         run: npm run build:static
 
   integration-local:
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 45
     services:
       registry:
@@ -118,7 +118,7 @@ jobs:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7, 8]
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -163,7 +163,7 @@ jobs:
       fail-fast: false
       matrix:
         shard: [1, 2, 3]
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
@@ -204,7 +204,7 @@ jobs:
   integration-local-slow:
     if: always()
     needs: integration-local-slow-shard
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 5
     steps:
       - name: Every shard passed
@@ -213,7 +213,7 @@ jobs:
   integration-local-gateway:
     if: always()
     needs: integration-local-gateway-shard
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 5
     steps:
       - name: Every shard passed
@@ -222,7 +222,7 @@ jobs:
   # Whether this change touches the code the installer tier covers; the tier costs minutes, so
   # it runs only then. A skipped job reports as passed to a required check.
   changes:
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 5
     outputs:
       plugins: ${{ steps.diff.outputs.plugins }}
@@ -250,7 +250,7 @@ jobs:
   installer:
     needs: changes
     if: needs.changes.outputs.plugins == 'true'
-    runs-on: ubuntu-latest
+    runs-on: smol
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
